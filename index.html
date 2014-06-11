@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<title>shell</title>
+<script type='text/javascript' src='term.js'></script>
+<script type='text/javascript'>
+window.addEventListener('load', function() {
+    var term = new Terminal({
+      cols: 80,
+      rows: 24,
+      screenKeys: false
+    });
+
+   function makeRequest(command) {
+      var url = "exec.php";
+      var req = new XMLHttpRequest();
+      req.onreadystatechange = function () {
+          if (req.readyState === 4) {
+              if (req.status === 200) {
+                  term.write(req.responseText.replace('\n', '\r\n', 'gm'));
+                  term.write('\r\n');
+              } else {
+                  console.log('There was a problem with the request.');
+              }
+          }
+      }
+      req.open('POST', url);
+      req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      req.send('command=' + encodeURIComponent(command));
+    }
+
+    var cmd = '';
+    term.on('data', function(data) {
+        if (data.charCodeAt(0) == 13) {
+            term.write('\r\n');
+            makeRequest(cmd);
+            cmd = '';
+        } else {
+            term.write(data);
+            cmd = cmd + data;
+        }
+    });
+
+    term.on('title', function(title) {
+      document.title = title;
+    });
+
+    term.open(document.body);
+
+    term.write('\x1b[31mWelcome to term.js!\x1b[m\r\n');
+
+}, false);
+</script>
+</head>
+<body></body>
+</html>
