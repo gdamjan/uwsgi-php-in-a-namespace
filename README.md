@@ -32,8 +32,8 @@ TODO
  - stderr
  - long running bash in a pty
  - blinking cursor
-
  - net namespace, need for the listening socket to exit the net namespace (unix/abstract sockets?)
  - pid namespace fails
  - "user namespaces" so no need for sudo
  - --emperor-use-clone
+ - fix/document reloading problem
