@@ -25,6 +25,9 @@ USAGE
 
 sudo is required for the namespacing stuff (also see TODO)
 
+The php payload is a Weevely php shell, look at the [Weevely tutorial](https://github.com/epinna/Weevely/wiki/Tutorial),
+but generally just get it and run `./weevely.py http://localhost:8000 pass`.
+
 
 TODO
 ====
