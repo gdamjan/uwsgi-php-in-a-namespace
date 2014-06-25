@@ -32,9 +32,6 @@ but generally just get it and run `./weevely.py http://localhost:8000 pass`.
 TODO
 ====
 
- - stderr
- - long running bash in a pty
- - blinking cursor
  - net namespace, need for the listening socket to exit the net namespace (unix/abstract sockets?)
  - pid namespace fails
  - "user namespaces" so no need for sudo
